@@ -1,0 +1,1 @@
+-- Initial schema is stored in database/schema.sql for manual v1 installs.

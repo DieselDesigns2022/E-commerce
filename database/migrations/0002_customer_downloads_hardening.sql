@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS stripe_events (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    event_id VARCHAR(190) NOT NULL UNIQUE,
+    event_type VARCHAR(190) NOT NULL,
+    payload JSON NULL,
+    processed_at DATETIME NULL,
+    created_at DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
