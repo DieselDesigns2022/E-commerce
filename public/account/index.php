@@ -1,0 +1,2 @@
+<?php declare(strict_types=1); require_once dirname(__DIR__, 2) . '/app/helpers.php'; ?>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>My Account</title><link rel="stylesheet" href="/assets/storefront.css"></head><body><main class="section"><div class="container"><h1>My Account</h1><p>TODO: show customer profile, past orders, order details, and digital downloads after customer auth is completed.</p></div></main></body></html>
