@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+if (!function_exists('env_value')) {
 function env_value(string $key, mixed $default = null): mixed
 {
     static $loaded = false;
@@ -23,6 +24,7 @@ function env_value(string $key, mixed $default = null): mixed
     }
 
     return $_ENV[$key] ?? getenv($key) ?: ($values[$key] ?? $default);
+}
 }
 
 return [

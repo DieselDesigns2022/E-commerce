@@ -1,0 +1,36 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Local editor / OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Backups / temporary files
+*.bak
+*.backup
+*.tmp
+*.old
+*.orig
+*~
+
+# Runtime uploads and generated files
+public/uploads/*
+!public/uploads/.gitkeep
+!public/uploads/products/
+!public/uploads/products/.gitkeep
+!public/uploads/media/
+!public/uploads/media/.gitkeep
+storage/uploads/*
+!storage/uploads/.gitkeep
+!storage/uploads/products/
+!storage/uploads/products/.gitkeep
+storage/digital-files/*
+!storage/digital-files/.gitkeep
+storage/logs/*
+!storage/logs/.gitkeep

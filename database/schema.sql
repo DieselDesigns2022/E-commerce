@@ -239,6 +239,15 @@ CREATE TABLE password_resets (
     INDEX idx_password_resets_lookup (email, user_type, token_hash)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE stripe_events (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    event_id VARCHAR(190) NOT NULL UNIQUE,
+    event_type VARCHAR(190) NOT NULL,
+    payload JSON NULL,
+    processed_at DATETIME NULL,
+    created_at DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE activity_logs (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     admin_id BIGINT UNSIGNED NULL,

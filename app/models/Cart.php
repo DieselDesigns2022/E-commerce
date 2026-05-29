@@ -9,6 +9,7 @@ require_once __DIR__ . '/Product.php';
 function cart_start(): void
 {
     if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_name('ecommerce_customer');
         session_start();
     }
     $_SESSION['cart'] ??= [];

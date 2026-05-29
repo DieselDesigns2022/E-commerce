@@ -11,11 +11,18 @@ $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf();
     if (!empty($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
+        if ((int) $_FILES['file']['size'] > 100 * 1024 * 1024) {
+            $errors[] = 'Digital files must be 100 MB or smaller.';
+        }
+        if ($errors) {
+            // Do not store invalid files.
+        } else {
         $filename = 'digital-' . bin2hex(random_bytes(12)) . '.bin';
         $destination = dirname(__DIR__, 2) . '/storage/digital-files/' . $filename;
         if (move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
             digital_file_create((int) $_POST['product_id'], $_FILES['file']['name'], 'storage/digital-files/' . $filename, (int) $_FILES['file']['size'], $_POST['download_limit'] !== '' ? (int) $_POST['download_limit'] : null, $_POST['expires_after_days'] !== '' ? (int) $_POST['expires_after_days'] : null);
             redirect('/admin/digital-files.php?uploaded=1');
+        }
         }
     } else {
         $errors[] = 'Choose a file to upload.';

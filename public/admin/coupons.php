@@ -23,8 +23,8 @@ require dirname(__DIR__, 2) . '/resources/views/admin/header.php';
 <label>Type <select name="discount_type"><?php foreach (['percent'=>'Percent','fixed'=>'Fixed amount','free_shipping'=>'Free shipping'] as $value=>$label): ?><option value="<?= e($value) ?>" <?= ($editing['discount_type'] ?? '') === $value ? 'selected' : '' ?>><?= e($label) ?></option><?php endforeach; ?></select></label>
 <label>Discount Value <input name="discount_value" type="number" step="0.01" min="0" value="<?= e(isset($editing['discount_value']) ? ($editing['discount_type'] === 'percent' ? $editing['discount_value'] : number_format((int) $editing['discount_value']/100, 2, '.', '')) : '') ?>"></label>
 <label>Minimum Order <input name="minimum_order" type="number" step="0.01" min="0" value="<?= e(isset($editing['minimum_order_cents']) && $editing['minimum_order_cents'] !== null ? number_format((int) $editing['minimum_order_cents']/100, 2, '.', '') : '') ?>"></label>
-<label>Starts At <input name="starts_at" type="datetime-local" value="<?= e($editing['starts_at'] ?? '') ?>"></label>
-<label>Ends At <input name="ends_at" type="datetime-local" value="<?= e($editing['ends_at'] ?? '') ?>"></label>
+<label>Starts At <input name="starts_at" type="date" value="<?= e(isset($editing['starts_at']) && $editing['starts_at'] ? substr((string) $editing['starts_at'], 0, 10) : '') ?>"></label>
+<label>Ends At <input name="ends_at" type="date" value="<?= e(isset($editing['ends_at']) && $editing['ends_at'] ? substr((string) $editing['ends_at'], 0, 10) : '') ?>"></label>
 <label>Usage Limit <input name="usage_limit" type="number" min="0" value="<?= e($editing['usage_limit'] ?? '') ?>"></label>
 <label class="checkbox-row"><input type="checkbox" name="is_active" value="1" <?= !isset($editing) || !empty($editing['is_active']) ? 'checked' : '' ?>> Active</label>
 <div class="full actions"><button type="submit">Save Coupon</button></div></form>
